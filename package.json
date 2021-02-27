@@ -1,0 +1,32 @@
+{
+  "name": "user-panel",
+  "version": "1.0.0",
+  "description": "react user panel",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-fusioncharts": "^3.1.2",
+    "react-icons": "^3.10.0",
+    "react-router-dom": "^5.2.0",
+    "react-scripts": "3.4.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lukassso/user-panel-in-reactjs.git"
+  },
+  "keywords": [
+    "rect",
+    "router",
+    "auth0"
+  ],
+  "author": "LZ",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lukassso/user-panel-in-reactjs/issues"
+  },
+  "homepage": "https://github.com/lukassso/user-panel-in-reactjs#readme"
+}
