@@ -6,5 +6,5 @@
 - Fusion Charts
 - Auth0
 
-Project inspired to John Smiga app project:
+Project inspired to John Smilga app project:
 https://github.com/john-smilga/react-search-github-users/tree/master/src
