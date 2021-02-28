@@ -5,11 +5,11 @@ import {Navbar, Search, Info, User, Repos} from '../components'
 const Dashboard = props => {
   return (
     <div>
-      <Navbar></Navbar>
-      <Search/>
+      {/* <Navbar></Navbar> */}
+      {/* <Search/> */}
       <Info/>
-      <User/>
-      <Repos/>
+      {/* <User/> */}
+      {/* <Repos/> */}
     </div>
   )
 }
