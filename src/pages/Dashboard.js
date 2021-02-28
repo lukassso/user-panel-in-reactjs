@@ -1,10 +1,15 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import {Navbar, Search, Info, User, Repos} from '../components'
 
 const Dashboard = props => {
   return (
     <div>
-      Main dashboard
+      <Navbar></Navbar>
+      <Search/>
+      <Info/>
+      <User/>
+      <Repos/>
     </div>
   )
 }
