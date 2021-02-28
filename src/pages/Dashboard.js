@@ -8,7 +8,7 @@ const Dashboard = props => {
       {/* <Navbar></Navbar> */}
       {/* <Search/> */}
       <Info/>
-      {/* <User/> */}
+      <User/>
       {/* <Repos/> */}
     </div>
   )
