@@ -1,11 +1,20 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from "react"
+import mockUser from "./mockData.js/mockUser"
+import mockRepos from "./mockData.js/mockRepos"
+import mockFollowers from "./mockData.js/mockFollowers"
 
-const GithubContext = React.createContext();
+const GithubContext = React.createContext()
 
-const GithubProvider = ({children}) => {
-  return(
-    <GithubContext.Provider value={'hello context'}>{children}</GithubContext.Provider>
+const GithubProvider = ({ children }) => {
+  const [githubUser, setGithubUser] = useState(mockUser)
+  const [repos, setRepos] = useState(mockRepos)
+  const [followers, setFollowers] = useState(mockFollowers)
+
+  return (
+    <GithubContext.Provider value={{githubUser, repos, followers}}>
+      {children}
+    </GithubContext.Provider>
   )
 }
 
-export { GithubProvider, GithubContext}
+export { GithubProvider, GithubContext }
