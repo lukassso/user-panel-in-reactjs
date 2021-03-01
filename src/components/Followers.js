@@ -1,7 +1,6 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import styled from 'styled-components';
-
+import React from "react"
+import PropTypes from "prop-types"
+import styled from "styled-components"
 
 const Wrapper = styled.article`
   background: var(--clr-white);
@@ -11,7 +10,7 @@ const Wrapper = styled.article`
   position: relative;
 
   &::before {
-    content: ' followers';
+    content: " followers";
     position: absolute;
     top: 0;
     left: 0;
@@ -54,18 +53,12 @@ const Wrapper = styled.article`
       color: var(--clr-grey-5);
     }
   }
-`;
+`
 
-const Followers = props => {
-  return (
-    <div>
-      Follower component
-    </div>
-  )
+const Followers = (props) => {
+  return <div>Follower component</div>
 }
 
-Followers.propTypes = {
-
-}
+Followers.propTypes = {}
 
 export default Followers
