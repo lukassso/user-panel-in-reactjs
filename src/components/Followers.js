@@ -1,6 +1,7 @@
 import React from "react"
 import PropTypes from "prop-types"
 import styled from "styled-components"
+import {GithubContext} from '../context/context'
 
 const Wrapper = styled.article`
   background: var(--clr-white);
@@ -56,7 +57,24 @@ const Wrapper = styled.article`
 `
 
 const Followers = (props) => {
-  return <div>Follower component</div>
+  const {followers} = React.useContext(GithubContext)
+
+  return <Wrapper>
+      <div className='followers'>
+        {followers.map((follower, index) => {
+          const { avatar_url: img, html_url, login } = follower;
+          return (
+            <article key={index}>
+              <img src={img} alt={login} />
+              <div>
+                <h4>{login}</h4>
+                <a href={html_url}>{html_url}</a>
+              </div>
+            </article>
+          );
+        })}
+      </div>
+    </Wrapper>
 }
 
 Followers.propTypes = {}
