@@ -9,7 +9,7 @@ const Dashboard = props => {
       {/* <Search/> */}
       <Info/>
       <User/>
-      {/* <Repos/> */}
+      <Repos/>
     </div>
   )
 }
