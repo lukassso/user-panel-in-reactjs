@@ -1,6 +1,7 @@
-import React from 'react'
-import { GithubContext } from '../context/context';
-import styled from 'styled-components';
+import React from "react"
+import { GithubContext } from "../context/context"
+import styled from "styled-components"
+import Pie from "./Charts/Pie"
 
 const Wrapper = styled.div`
   display: grid;
@@ -24,15 +25,32 @@ const Wrapper = styled.div`
     width: 100% !important;
     border-radius: var(--radius) !important;
   }
-`;
+`
+
+const mostUsed = [
+  {
+    label: "Javascript",
+    value: "134",
+  },
+  {
+    label: "CSS",
+    value: "122",
+  },
+  {
+    label: "Java",
+    value: "233",
+  },
+]
 
 const Repos = () => {
-  const {repos} = React.useContext(GithubContext)
+  const { repos } = React.useContext(GithubContext)
   console.log(repos)
   return (
-    <div>
-      Repo charts component
-    </div>
+    <section className="section">
+      <Wrapper className='section-center'>
+        <Pie data={mostUsed} />
+      </Wrapper>
+    </section>
   )
 }
 
