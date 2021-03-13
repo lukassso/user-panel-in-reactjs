@@ -44,10 +44,22 @@ const mostUsed = [
 
 const Repos = () => {
   const { repos } = React.useContext(GithubContext)
-  console.log(repos)
+  // console.log(repos)
+
+  let languages = repos.reduce((total, item) => {
+    // console.log(item);
+    const { language } = item
+    if (!language) return total
+    console.log(language)
+
+    total[language] = 30
+    return total
+  }, {})
+  console.log(languages)
+
   return (
     <section className="section">
-      <Wrapper className='section-center'>
+      <Wrapper className="section-center">
         <Pie data={mostUsed} />
       </Wrapper>
     </section>
