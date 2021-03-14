@@ -3,6 +3,8 @@ import { GithubContext } from "../context/context"
 import styled from "styled-components"
 import Pie from "./Charts/Pie"
 import Doughnut from "./Charts/Doughnut"
+import Column from './Charts/Column'
+import Bar from './Charts/Bar'
 
 const Wrapper = styled.div`
   display: grid;
@@ -28,7 +30,11 @@ const Wrapper = styled.div`
   }
 `
 
-const mostUsed = [
+const Repos = () => {
+  const { repos } = React.useContext(GithubContext)
+  // console.log(repos)
+
+  const chartData = [
   {
     label: "Javascript",
     value: "134",
@@ -42,10 +48,6 @@ const mostUsed = [
     value: "233",
   },
 ]
-
-const Repos = () => {
-  const { repos } = React.useContext(GithubContext)
-  // console.log(repos)
 
   let languages = repos.reduce((total, item) => {
     // console.log(item);
@@ -85,12 +87,13 @@ const mostPopular = Object.values(languages)
 });
 console.log(mostPopular)
 
-
   return (
     <section className="section">
       <Wrapper className="section-center">
         <Pie data={mostUsed} />
+        <Column data={chartData} />
         <Doughnut data={mostPopular}/>
+        <Bar data={chartData} />
       </Wrapper>
     </section>
   )
