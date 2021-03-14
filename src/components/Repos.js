@@ -49,18 +49,31 @@ const Repos = () => {
   let languages = repos.reduce((total, item) => {
     // console.log(item);
     const { language } = item
+    // console.log(language)
     if (!language) return total
-    console.log(language)
-
-    total[language] = 30
+    if (!total[language]) {
+      total[language] = { label: language, value: 1 }
+    } else {
+      total[language] = {
+        ...total[language],
+        value: total[language].value + 1,
+      }
+    }
     return total
   }, {})
+  // console.log(languages)
+  
+  languages = Object.values(languages)
+    .sort((a, b) => {
+      return b.value - a.value
+    })
+    .slice(0, 4)
   console.log(languages)
 
   return (
     <section className="section">
       <Wrapper className="section-center">
-        <Pie data={mostUsed} />
+        <Pie data={languages} />
       </Wrapper>
     </section>
   )
