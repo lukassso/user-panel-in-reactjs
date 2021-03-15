@@ -3,8 +3,8 @@ import { GithubContext } from "../context/context"
 import styled from "styled-components"
 import Pie from "./Charts/Pie"
 import Doughnut from "./Charts/Doughnut"
-import Column from './Charts/Column'
-import Bar from './Charts/Bar'
+import Column from "./Charts/Column"
+import Bar from "./Charts/Bar"
 
 const Wrapper = styled.div`
   display: grid;
@@ -35,19 +35,19 @@ const Repos = () => {
   // console.log(repos)
 
   const chartData = [
-  {
-    label: "Javascript",
-    value: "134",
-  },
-  {
-    label: "CSS",
-    value: "122",
-  },
-  {
-    label: "Java",
-    value: "233",
-  },
-]
+    {
+      label: "Javascript",
+      value: "134",
+    },
+    {
+      label: "CSS",
+      value: "122",
+    },
+    {
+      label: "Java",
+      value: "233",
+    },
+  ]
 
   let languages = repos.reduce((total, item) => {
     // console.log(item);
@@ -55,11 +55,11 @@ const Repos = () => {
     // console.log(language)
     if (!language) return total
     if (!total[language]) {
-      total[language] = { 
-        label: language, 
-        value: 1, 
-        stars: stargazers_count 
-        };
+      total[language] = {
+        label: language,
+        value: 1,
+        stars: stargazers_count,
+      }
     } else {
       total[language] = {
         ...total[language],
@@ -70,7 +70,7 @@ const Repos = () => {
     return total
   }, {})
   console.log(languages)
-  
+
   const mostUsed = Object.values(languages)
     .sort((a, b) => {
       return b.value - a.value
@@ -78,22 +78,59 @@ const Repos = () => {
     .slice(0, 4)
   console.log(languages)
 
-const mostPopular = Object.values(languages)
-.sort((a, b) => {
-  return b.stars - a.stars
-})
-.map(item => {
-  return({...item, value:item.stars})
-});
-console.log(mostPopular)
+  const mostPopular = Object.values(languages)
+    .sort((a, b) => {
+      return b.stars - a.stars
+    })
+    .map((item) => {
+      return { ...item, value: item.stars }
+    })
+  console.log(mostPopular)
+
+  let { stars, forks } = repos.reduce(
+    (total, item) => {
+      const { stargazers_count, name, forks } = item;
+      total.stars[stargazers_count] = { 
+        label: name, 
+        value: stargazers_count 
+        }
+        total.forks[forks] = {
+          label: name,
+          value: forks
+        }
+      return total
+    },
+    {
+      stars: {},
+      forks: {}
+    }
+  )
+  console.log(stars)
+
+  stars = Object.values(stars)
+  .sort((a,b) => {
+    return b.stars - a.stars
+  })
+  .slice(0,5) 
+  .reverse();
+
+  forks = Object.values(forks)
+  .sort((a,b) => {
+    return b.forks - a.forks
+  })
+  .slice(0,5) 
+  .reverse();
+
+  console.log(stars)
+
 
   return (
     <section className="section">
       <Wrapper className="section-center">
         <Pie data={mostUsed} />
-        <Column data={chartData} />
-        <Doughnut data={mostPopular}/>
-        <Bar data={chartData} />
+        <Column data={stars} />
+        <Doughnut data={mostPopular} />
+        <Bar data={forks} />
       </Wrapper>
     </section>
   )
