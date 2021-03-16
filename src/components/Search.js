@@ -2,32 +2,36 @@ import React from "react"
 import PropTypes from "prop-types"
 import styled from "styled-components"
 import { GithubContext } from "../context/context"
-import {MdSearch} from 'react-icons/md';
+import { MdSearch } from "react-icons/md"
 
 const Search = (props) => {
-  const [user, setUser] = React.useState('')
+  const [user, setUser] = React.useState("")
+  const { requests } = React.useContext(GithubContext)
+  console.log(requests)
 
   const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log(user);
+    e.preventDefault()
+    // console.log(user);
+    if (user) {
+    }
   }
 
   return (
     <section className="section">
       <Wrapper className="section-center">
         <form onSubmit={handleSubmit}>
-          <div className='form-control'>
-            <MdSearch/>
-            <input 
-            type='text' 
-            placeholder='enter github user'
-            value={user}
-            onChange={(e)=>setUser(e.target.value)}
+          <div className="form-control">
+            <MdSearch />
+            <input
+              type="text"
+              placeholder="enter github user"
+              value={user}
+              onChange={(e) => setUser(e.target.value)}
             />
-            <button type='submit'>search</button>
+            {requests > 0 && <button type="submit">search</button>}
           </div>
         </form>
-        <h3>request: 60 / 60</h3>
+        <h3>request: {requests} / 60</h3>
       </Wrapper>
     </section>
   )
