@@ -6,8 +6,8 @@ import { MdSearch } from "react-icons/md"
 
 const Search = (props) => {
   const [user, setUser] = React.useState("")
-  const { requests } = React.useContext(GithubContext)
-  console.log(requests)
+  const { requests, error } = React.useContext(GithubContext)
+  // console.log(requests)
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -19,6 +19,11 @@ const Search = (props) => {
   return (
     <section className="section">
       <Wrapper className="section-center">
+        {error.show && (
+          <ErrorWrapper>
+            <p>{error.msg}</p>
+          </ErrorWrapper>
+        )}
         <form onSubmit={handleSubmit}>
           <div className="form-control">
             <MdSearch />

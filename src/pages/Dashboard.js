@@ -5,7 +5,7 @@ import {Navbar, Search, Info, User, Repos} from '../components'
 const Dashboard = props => {
   return (
     <div>
-      {/* <Navbar></Navbar> */}
+      <Navbar></Navbar>
       <Search/>
       <Info/>
       <User/>
