@@ -27,9 +27,18 @@ const GithubProvider = ({ children }) => {
       console.log(err)
     )
     console.log(response)
+
     if (response) {
       setGithubUser(response.data);
+      const{login, followers_url} = response.data;
       // more logic here
+      // repos
+      // https://api.github.com/users/john-smilga/repos?per_page=100
+      axios(`${rootUrl}/users/${login}/repos?per_page=100`).then(response => setRepos(response.data)
+      )
+      // follow
+      // https://api.github.com/users/john-smilga/followers
+        axios(`${followers_url}/?per_page=100`).then(response => setFollowers(response.data))
     } else {
       toggleError(true, "there is no user whit that username")
     }
